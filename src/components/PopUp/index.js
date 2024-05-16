@@ -15,7 +15,6 @@ import Text from '@components/Text';
 import styles from './style';
 
 const PopUp = ({popUpState, onClose, description}) => {
-  console.info('data bodoh :: ', description, popUpState);
   let imageHeader;
 
   switch (description?.item_cat) {
