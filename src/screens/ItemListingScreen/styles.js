@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: '100%',
     flexDirection: 'row',
-    padding: 12,
+    padding: 8,
     backgroundColor: '#2478b7',
     paddingHorizontal: 24,
   },
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     paddingTop: Platform.OS === 'android' ? 72 : 24,
-    marginVertical: 8,
     flex: 1,
   },
   container: {

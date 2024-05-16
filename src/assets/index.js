@@ -6,6 +6,9 @@ const assets = {
     meat: require('@assets/dummyImage/meat.jpeg'),
   },
   splash: require('@assets/branding/splash.png'),
+  icCloseBlack: require('@assets/icon/blackClose44.png'),
+
+  logoIV: require('@assets/branding/Syarif_IV_WM.png'),
 };
 
 export default assets;

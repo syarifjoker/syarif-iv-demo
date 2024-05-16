@@ -8,6 +8,7 @@ import TileList from '../../components/List/TileList';
 import {WHITE} from 'src/constants/Color';
 
 import Text from '@components/Text';
+import assets from '@assets';
 
 export default function ItemListingScreen({productList}) {
   return (
@@ -23,18 +24,18 @@ export default function ItemListingScreen({productList}) {
                 fontSize={20}
                 lineHeight={24}
                 textAlign={'left'}>
-                Grocerieeez
+                Farm2Store
               </Text>
             </View>
             <View style={styles.headerDiv}>
-              <Text
-                color={WHITE}
-                style={{fontWeight: '700'}}
-                fontSize={14}
-                lineHeight={20}
-                textAlign={'left'}>
-                Login
-              </Text>
+              <Image
+                source={assets.logoIV}
+                style={{
+                  width: 70,
+                  height: 70,
+                  position: 'static'
+                }}
+              />
             </View>
           </View>
         </View>
