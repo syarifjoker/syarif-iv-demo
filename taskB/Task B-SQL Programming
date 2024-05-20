@@ -1,0 +1,79 @@
+-- TASK B (PART 1): Write a script to import the json data in Part A into the database.
+
+CREATE TABLE itemList (
+id INT PRIMARY KEY,
+item_cat VARCHAR(100),
+item_name VARCHAR(100),
+expiry_date TIMESTAMP);
+
+INSERT INTO itemList (id, item_cat, item_name, expiry_date)
+VALUES
+(1, 'Vegetable', 'Tomato', '2024-02-28 09:16:01'),
+(2, 'Vegetable', 'Onion', '2024-06-30 09:16:01'),
+(3, 'Vegetable', 'Cucumber', '2024-03-30 09:16:01'),
+(4, 'Vegetable', 'Brocolli', '2024-01-30 09:16:01'),
+(5, 'Vegetable', 'Bell Pepper', '2023-10-30 09:16:01'),
+(6, 'Vegetable', 'Chili', '2023-12-30 09:16:01'),
+(7, 'Vegetable', 'Celery', '2023-09-30 09:16:01'),
+(8, 'Vegetable', 'Potato', '2023-11-30 09:16:01'),
+(9, 'Fruit', 'Orange', '2023-12-30 09:16:01'),
+(10, 'Fruit', 'Apple', '2023-10-30 09:16:01'),
+(11, 'Fruit', 'Pear', '2023-12-30 09:16:01'),
+(12, 'Fruit', 'Watermelon', '2023-10-30 09:16:01'),
+(13, 'Fruit', 'Plum', '2023-12-30 09:16:01'),
+(14, 'Fruit', 'Lemon', '2023-12-30 09:16:01'),
+(15, 'Fruit', 'Peach', '2024-01-30 09:16:01'),
+(16, 'Fruit', 'Cherry', '2024-03-30 09:16:01'),
+(17, 'Fruit', 'Grapes', '2024-01-30 09:16:01'), -- Fixed the year to make it valid
+(18, 'Seafood', 'Crab', '2024-03-30 09:16:01'),
+(19, 'Seafood', 'Shrimp', '2024-03-30 09:16:01'),
+(20, 'Seafood', 'Lobster', '2024-03-30 09:16:01'),
+(21, 'Seafood', 'Oyster', '2023-10-30 09:16:01'),
+(22, 'Seafood', 'Squid', '2023-11-30 09:16:01'),
+(23, 'Seafood', 'Bass', '2024-02-28 09:16:01'), -- Changed from Feb 30 to Feb 28
+(24, 'Seafood', 'Salmon', '2024-01-30 09:16:01'),
+(25, 'Seafood', 'Tuna', '2024-01-30 09:16:01'),
+(26, 'Meat', 'Lamb Chop', '2023-12-30 09:16:01'),
+(27, 'Meat', 'Sirloin', '2023-12-30 09:16:01'),
+(28, 'Meat', 'Dice Beef', '2024-03-30 09:16:01'),
+(29, 'Meat', 'Chicken', '2024-02-28 09:16:01'), -- Changed from Feb 30 to Feb 28
+(30, 'Meat', 'Salami', '2024-01-30 09:16:01'),
+(31, 'Meat', 'Sausages', '2024-01-30 09:16:01');
+
+
+-- TASK B (PART 2): Write a script to return expired ingredient, near expired ingredient (less than 1 month) & and list of ingredients (more than 1 month).
+-- Get expired items
+SELECT id, item_cat, item_name, expiry_date
+FROM itemList
+WHERE expiry_date < NOW();
+
+-- Get near expired ingredient less than 1 month
+SELECT id, item_cat, item_name, expiry_date
+FROM itemList
+WHERE expiry_date >= NOW()
+  AND expiry_date < DATE_ADD(NOW(), INTERVAL 1 MONTH)
+
+-- Get list of ingredients (more than 1 month)
+SELECT id, item_cat, item_name, expiry_date
+FROM itemList
+WHERE expiry_date >= DATE_ADD(NOW(), INTERVAL 1 MONTH);
+
+
+-- [ALTERNATIVE] TASK B (PART 2): Write a script to return expired ingredient, near expired ingredient (less than 1 month) & and list of ingredients (more than 1 month) in one time.
+-- Get the current date and time
+SET @current_date = NOW();
+
+-- Return categorized ingredients
+SELECT 'Expired' AS category, id, item_cat, item_name, expiry_date
+FROM itemList
+WHERE expiry_date < @current_date
+UNION ALL
+SELECT 'Near Expired (< 1 month)' AS category, id, item_cat, item_name, expiry_date
+FROM itemList
+WHERE expiry_date >= @current_date
+  AND expiry_date < DATE_ADD(@current_date, INTERVAL 1 MONTH)
+UNION ALL
+SELECT 'More than 1 month remaining' AS category, id, item_cat, item_name, expiry_date
+FROM itemList
+WHERE expiry_date >= DATE_ADD(@current_date, INTERVAL 1 MONTH)
+ORDER BY category, expiry_date;

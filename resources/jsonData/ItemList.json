@@ -4,7 +4,7 @@
       "id": "1",
       "item_cat": "Vegetable",
       "item_name": "Tomato",
-      "expiry_date": "2024-02-30T09:16:01"
+      "expiry_date": "2024-02-28T09:16:01"
     },
     {
       "id": "2",
@@ -136,7 +136,7 @@
       "id": "23",
       "item_cat": "Seafood",
       "item_name": "Bass",
-      "expiry_date": "2024-02-30T09:16:01"
+      "expiry_date": "2024-02-28T09:16:01"
     },
     {
       "id": "24",
@@ -172,7 +172,7 @@
       "id": "29",
       "item_cat": "Meat",
       "item_name": "Chicken",
-      "expiry_date": "2023-02-30T09:16:01"
+      "expiry_date": "2023-02-28T09:16:01"
     },
     {
       "id": "30",

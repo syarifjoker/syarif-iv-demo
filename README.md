@@ -53,3 +53,8 @@ https://install.appcenter.ms/users/fudinsaari-gmail.com/apps/syarif-iv-demo-app/
 ### For iOS
 
 N/A due to provisioning required to build the app.
+
+
+### For Task B: SQL Programming
+
+Can refer file inside folder ./taskB, Task B-SQL Programming document
